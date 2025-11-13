@@ -85,7 +85,7 @@ A key contribution of this work is the use of an extended set of parcellations, 
 *   dHCP Neonatal Atlas Parcellations
 *   dHCP Neonatal Multi Channel White Matter Parcellations
 
-These extended parcellations are available in the [parcellation.zip](./parcellation.zip) file.
+These extended parcellations are available in the [parcellation.zip](./parcellations.zip) file.
 
 The pipeline automatically warps these parcellations into each subject's native space, enabling detailed region-of-interest (ROI) analysis.
 
