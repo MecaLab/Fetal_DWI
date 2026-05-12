@@ -5,9 +5,10 @@ import sys
 subject = sys.argv[1]  
 session = sys.argv[2]  
 
-df = pd.read_csv('tools/2025_09_DWI_patients_clean.csv')
+marsfet_info = ''
 
-GW = df[(df.marsfet_subject_id == subject) & (df.marsfet_session_id == session)]['GW_rounded'].iloc[0]
+df = pd.read_csv('/envau/work/meca/users/cazzolla.m/Marsfet_Diffusion/Marsfet_diffusion_info.csv')
+GW = df[(df.Subject == subject) & (df.Session == session)]['GW_rounded'].iloc[0]
 
 # Cap GW at 36
 GW_clipped = min(max(GW, 21), 36)
