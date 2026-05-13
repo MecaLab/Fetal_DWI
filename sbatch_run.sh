@@ -15,7 +15,7 @@ eval "$(conda shell.bash hook)"
 conda activate FetalDiffusion
 
 # Cases to process
-LIST="/envau/work/meca/udata/Fetus/datasets/Marsfet_Diffusion/utils/Marsfet_diffusion_control.csv"
+LIST="/envau/work/meca/data/Fetus/datasets/Marsfet_Diffusion/utils/Marsfet_diffusion_control.csv"
 
 # read csv
 mapfile -t LINES < <(tail -n +2 "$LIST")  # Skip header
