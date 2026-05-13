@@ -49,8 +49,10 @@ echo "Run: ${RUN_ID}"
 echo "Gestational Week (GW): ${GW}"
 echo "-----------------------------------------"
 
+skip_already_processed=true
+
 # skip if already processed
-if [ -f "$OUTPUT_DIR_BIDS_QC/${BASENAME}_refspace_MD.nii.gz" ]; then
+if [ -f "$OUTPUT_DIR_BIDS_QC/${BASENAME}_refspace_MD.nii.gz" ] && [ "$skip_already_processed" = true ]; then
     echo "✅ Subject ${BASENAME} already processed. Skipping..."
     exit 0
 fi
