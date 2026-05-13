@@ -8,7 +8,7 @@ module load singularity
 module load FSL/0.6.0.7.18
 
 eval "$(conda shell.bash hook)"
-conda activate /envau/work/meca/users/cazzolla.m/conda_envs/eddy3
+conda activate FetalDiffusion
 
 if [ "$#" -ne 3 ]; then
     echo "Usage: $0 <SUBJECT_ID> <SESSION_ID> <RUN_ID>"
@@ -55,10 +55,10 @@ if [ -f "$OUTPUT_DIR_BIDS_QC/${BASENAME}_refspace_MD.nii.gz" ]; then
     exit 0
 fi
 
-#echo "STEP 1: Preprocessing data..."
-#bash ./01_preprocessing.sh
-#echo "✅ STEP 1 complete."
-#echo "-----------------------------------------"
+echo "STEP 1: Preprocessing data..."
+bash ./01_preprocessing.sh
+echo "✅ STEP 1 complete."
+echo "-----------------------------------------"
 
 echo "STEP 2a: Registration T2w..."
 bash ./02a_registration_T2w.sh
