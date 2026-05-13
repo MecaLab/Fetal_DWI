@@ -16,6 +16,8 @@ An automated, end-to-end preprocessing and processing pipeline for Fetal Diffusi
 
 - **Quality Control**: Automated generation of multi-planar lightbox snapshots for rapid visual inspection.
 
+For any questions can try to ask DeepWiki: https://deepwiki.com/MecaLab/Fetal_DWI
+
 ---
 
 ## 🛠️ Prerequisites
