@@ -1,0 +1,46 @@
+################################################
+# ITK-SnAP Label Description File
+# File format: 
+# IDX   -R-  -G-  -B-  -A--  VIS MSH  LABEL
+# Fields: 
+#    IDX:   Zero-based index 
+#    -R-:   Red color component (0..255)
+#    -G-:   Green color component (0..255)
+#    -B-:   Blue color component (0..255)
+#    -A-:   Label transparency (0.00 .. 1.00)
+#    VIS:   Label visibility (0 or 1)
+#    IDX:   Label mesh visibility (0 or 1)
+#  LABEL:   Label description 
+################################################
+    0     0    0    0        0  0  0    "Clear Label"
+    1    40   82   99        1  1  0    "eCSF L"
+    2    60   56  135        1  1  0    "eCSF R"
+    3   115   33  162        1  1  0    "cGM L"
+    4   216   10  113        1  1  0    "cGM R"
+    5    73   64  194        1  1  0    "Fetal WM L"
+    6   158  130   55        1  1  0    "Fetal WM R"
+    7   118  214  255        1  1  0    "LV L"
+    8   118  214  255        1  1  0    "LV R"
+    9     4   51  255        1  1  0    "CSP"
+   10   162   59    0        1  1  0    "Brainstem"
+   11    52  176   54        1  1  0    "Cerebellum L"
+   12     6   99    8        1  1  0    "Cerebellum R"
+   13   115  255  117        1  1  0    "Vermis"
+   14    86  243   58        1  1  0    "Basal Ganglia L"
+   15    70  203  181        1  1  0    "Basal Ganglia R"
+   16   213  216   56        1  1  0    "Thalamus L"
+   17   149   32   28        1  1  0    "Thalamus R"
+   18   118  214  255        1  1  0    "3V"
+   19   118  214  255        1  1  0    "4V"
+   20   234  255  129     0.76  1  1    "SP L"
+   21   255  128    0     0.73  1  1    "SP R"
+   22     0  249    0        1  1  1    "VZ R"
+   23     0  249    0        1  1  1    "VZ L"
+   24   243    0   12        1  1  1    "GE R"
+   25   255  129  135        1  1  1    "GE L"
+   26   255   38    0        1  1  1    "PVWM C2-C5 R"
+   27   255   38    0        1  1  1    "PVWM C2-C5 L"
+   28   148   23   81        1  1  1    "PVWM C1"
+   29   148   23   81        1  1  1    "PVWM C1"
+   30   255   47  146        1  1  0    "PVWM C4"
+   31   255   47  146        1  1  0    "PVWM C4"

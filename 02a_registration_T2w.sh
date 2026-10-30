@@ -1,15 +1,16 @@
 source config/config.sh
 
 # get the subject T2
-T2W="${T2W_DIR}/${SUBJECT_ID}/${SESSION_ID}/anat/${SUBJECT_ID}_${SESSION_ID}_rec-nesvor_T2w.nii.gz"
-T2W_SEG="${T2W_DIR}/${SUBJECT_ID}/${SESSION_ID}/anat/${SUBJECT_ID}_${SESSION_ID}_rec-nesvor_seg-bounti_dseg.nii.gz"
+T2W="${T2W_DIR}/${SUBJECT_ID}/${SESSION_ID}/anat/${SUBJECT_ID}_${SESSION_ID}_rec-nesvor_t2w.nii.gz"
+T2W_SEG="${T2W_DIR}/${SUBJECT_ID}/${SESSION_ID}/anat/${SUBJECT_ID}_${SESSION_ID}_rec-nesvor_desc-bountiTR_t2w.nii.gz"
 
 T2W_MASK="$OUTPUT_DIR_TMP/${BASENAME}_T2w_brain_mask.nii.gz"
 fslmaths $T2W_SEG -bin -dilM $T2W_MASK       # crete a mask from the bounti labels to speedup the registration
 
 # get the age-matched atlas
 ATLAS_T2W=${ATLAS_DIR}/structural/t2-t${GW}.00.nii.gz
-ATLAS_SEG=${ATLAS_DIR}/extended_parcellations/bounti_symmetrical-t${GW}.00_dhcp-19.nii.gz
+#ATLAS_SEG=${ATLAS_DIR}/extended_parcellations/bounti_symmetrical-t${GW}.00_dhcp-19.nii.gz
+ATLAS_SEG=${ATLAS_DIR}/parcellations/tissue-t${GW}.00_dhcp-19.nii.gz
 ATLAS_MASK=${ATLAS_DIR}/masks_dilated/mask-t${GW}.00_dhcp-19.nii.gz
 
 # extract the smoothed cortex from both of the T2

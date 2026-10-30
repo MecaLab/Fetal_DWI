@@ -1,14 +1,17 @@
 source config/config.sh
 
 # define the parcellations to map
+#PARCELLATIONS=(
+#    "bounti_symmetrical"
+#    "bounti"
+#    "harvard_cortical"
+#    "harvard_regional"
+#    "harvard_tissue"
+#    "neonatal_regional"
+#    "neonatal_WM"
+#)
 PARCELLATIONS=(
-    "bounti_symmetrical"
-    "bounti"
-    "harvard_cortical"
-    "harvard_regional"
-    "harvard_tissue"
-    "neonatal_regional"
-    "neonatal_WM"
+    "tissue"
 )
 
 # original space (will do chain of transformations)
@@ -16,7 +19,8 @@ ATLAS_T2W=${ATLAS_DIR}/structural/t2-t${GW}.00.nii.gz
 SUBJECT_DWI="$OUTPUT_DIR_TMP/${BASENAME}_final_b1000_masked.nii.gz"
 
 for PARCEL in "${PARCELLATIONS[@]}"; do
-    ATLAS_PARCEL=${ATLAS_DIR}/extended_parcellations/${PARCEL}-t${GW}.00_dhcp-19.nii.gz
+    #ATLAS_PARCEL=${ATLAS_DIR}/extended_parcellations/${PARCEL}-t${GW}.00_dhcp-19.nii.gz
+    ATLAS_PARCEL=${ATLAS_DIR}/parcellations/${PARCEL}-t${GW}.00_dhcp-19.nii.gz
 
     echo "Propagating ${PARCEL}"
 

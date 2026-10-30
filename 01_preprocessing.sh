@@ -52,7 +52,7 @@ BRAIN_MASK_DILATED_2="$OUTPUT_DIR_TMP/${BASENAME}_brain_mask_dilated_2.nii.gz"
 
 # FSL on the cluster has its own envirorment
 # to use mine i need to purge
-module purge
+# module purge
 
 python3 \
     "$BET_SCRIPT" \
@@ -64,11 +64,11 @@ python3 \
 mv "$OUTPUT_DIR_TMP/${BASENAME}_b0_denoised_mask.nii.gz" "$BRAIN_MASK"
 python3 "scripts/postprocess_mask.py" "$BRAIN_MASK" "$BRAIN_MASK"
 
-module load all
-module load ANTS/0.2.6.4
-module load mrtrix/3.0.8
-module load singularity
-module load FSL/0.6.0.7.18
+# module load all
+# module load ANTS/0.2.6.4
+# module load mrtrix/3.0.8
+# module load singularity
+# module load FSL/0.6.0.7.18
 
 
 fslmaths "${BRAIN_MASK}" -kernel 3D -dilM "${BRAIN_MASK_DILATED}"
@@ -210,4 +210,4 @@ cp "$OUTPUT_DIR_TMP/${BASENAME}_dwi_eddycorr.nii.gz" "$OUTPUT_DIR_BIDS_DWI/${BAS
 cp $EDDY_ROTATED_BVECS "$OUTPUT_DIR_BIDS_DWI/${BASENAME}_desc-preproc_dwi.bvec"
 cp $RAW_BVAL "$OUTPUT_DIR_BIDS_DWI/${BASENAME}_desc-preproc_dwi.bval"
 cp $RAW_JSON "$OUTPUT_DIR_BIDS_DWI/${BASENAME}_desc-preproc_dwi.json"
-cp "$BRAIN_MASK "$OUTPUT_DIR_BIDS_DWI/${BASENAME}_desc-brain_mask.nii.gz"
+cp $BRAIN_MASK "$OUTPUT_DIR_BIDS_DWI/${BASENAME}_desc-brain_mask.nii.gz"

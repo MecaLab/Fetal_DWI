@@ -1,11 +1,44 @@
 source config/config.sh
 
-module purge
-module load all
-module load ANTS/0.2.6.4
-module load mrtrix/3.0.8
-module load singularity
-module load FSL/0.6.0.7.18
+#module purge
+#module load all
+#module load ANTS/0.2.6.4
+#module load mrtrix/3.0.8
+#module load singularity
+#module load FSL/0.6.0.7.18
+
+
+
+die() {
+    printf '%s\n' "$1" >&2
+    exit 1
+}
+while :; do
+    case $1 in
+        -h|-\?|--help)
+            show_help # help message
+            exit
+            ;;
+        -q|--qc)
+            QC=1 # turn on QC step
+            ;;
+        -o|--overwrite)
+            OVER=1 # set the skip pre-existing scans flag to false
+            ;;
+        --) # end of optionals
+            shift
+            break
+            ;;
+        -?*)
+            printf 'warning: unknown option (ignored: %s\m)' "$1" >&2
+            ;;
+        *) # default case, no optionals
+            break
+    esac
+    shift
+done
+
+
 
 eval "$(conda shell.bash hook)"
 conda activate FetalDiffusion
@@ -49,7 +82,16 @@ echo "Run: ${RUN_ID}"
 echo "Gestational Week (GW): ${GW}"
 echo "-----------------------------------------"
 
-skip_already_processed=true
+if [[ ! -n $GW ]] ; then
+    echo GA week was not found. Check docs/diffusion_info.csv.
+    exit 1
+fi
+
+if [[ $OVER = 1 ]] ; then
+    skip_already_processed=false
+else
+    skip_already_processed=true
+fi
 
 # skip if already processed
 if [ -f "$OUTPUT_DIR_BIDS_QC/${BASENAME}_refspace_MD.nii.gz" ] && [ "$skip_already_processed" = true ]; then
@@ -82,13 +124,17 @@ bash ./04_fit_tensor.sh
 echo "✅ STEP 4 complete."
 echo "-----------------------------------------"
 
-module purge
-module load all
-module load FSL
+#module purge
+#module load all
+#module load FSL
 
-echo "STEP 5: QC snapshots..."
-bash ./99_qc.sh
-echo "✅ STEP 5 complete."
+if [[ $QC = 1 ]] ; then
+    echo "STEP 5: QC snapshots..."
+    bash ./99_qc.sh
+    echo "✅ STEP 5 complete."
+else
+    echo "QC not enabled (may require interactive GUI session)"
+fi
 echo "-----------------------------------------"
 
 echo "========================================="
